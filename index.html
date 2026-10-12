@@ -327,6 +327,8 @@
   .ma2-row.selected { border-color: var(--violet); }
   .ma2-chat { background: #e9e3d7; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; height: 340px; }
   .ma2-chat-header { background: #fff; padding: .6rem .75rem; display: flex; align-items: center; gap: .55rem; border-bottom: 1px solid #e2ded4; flex-shrink: 0; }
+  .ma2-avatar, .ma2-chat-avatar { position: relative; overflow: hidden; }
+  .ma2-avatar img, .ma2-chat-avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .ma2-chat-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--purple), var(--violet)); color: #fff; display: grid; place-items: center; font-size: .62rem; font-weight: 700; font-family: 'Syne', sans-serif; flex-shrink: 0; }
   .ma2-chat-head-info { flex: 1; min-width: 0; }
   .ma2-chat-name { font-size: .78rem; font-weight: 700; color: #1f2430; }
@@ -385,6 +387,15 @@
   .footer-contacts { display: flex; flex-wrap: wrap; gap: 1.4rem; font-size: .82rem; color: var(--muted); }
   .footer-contact strong { color: var(--off-white); }
   .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem; padding-top: 1.3rem; font-size: .74rem; color: var(--muted); }
+
+  /* PÚBLICO */
+  .aud-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.4rem; max-width: 1000px; margin: 0 auto; }
+  .aud-col { background: var(--card); border: 1px solid var(--border-soft); border-radius: 18px; padding: 1.8rem; }
+  .aud-col.parceiro { border-color: rgba(251,191,36,.28); }
+  .aud-col h3 { font-family: 'Syne', sans-serif; font-size: 1.15rem; margin: .8rem 0 .5rem; }
+  .aud-col > p { font-size: .85rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.1rem; font-weight: 300; }
+  .aud-list { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .aud-chip { font-size: .78rem; background: var(--navy-2); border: 1px solid var(--border-soft); border-radius: 50px; padding: .35rem .8rem; color: var(--off-white); }
 </style>
 </head>
 <body>
@@ -556,50 +567,11 @@
           <div class="sol-icon">🤖</div>
           <h3>Agente de IA: funil de conversão até o agendamento</h3>
           <p>Um agente que conversa com o lead no WhatsApp como se fosse uma pessoa da equipe, entende o contexto, qualifica e já conduz pra marcação automática de uma reunião. Funciona 24 horas por dia, todos os dias.</p>
-          <div class="sol-segments">
-            <div class="sol-seg-row"><span class="sol-seg-label">Cliente final</span><span class="sol-seg-text">Clínicas médicas, clínicas odontológicas, imobiliárias</span></div>
-            <div class="sol-seg-row"><span class="sol-seg-label parceiro">Parceiro</span><span class="sol-seg-text">Agências de tráfego pago, social media, consultores de marketing</span></div>
-          </div>
         </div>
         <div class="sol-demo">
           <div class="demo-phone-header"><span class="demo-dot-live"></span> SpotIA · atendimento automático</div>
           <div class="demo-chat" id="chatDemo"></div>
           <button class="chat-play-btn" id="chatPlayBtn">▶ Iniciar simulação</button>
-        </div>
-      </div>
-
-      <!-- 2. FOLLOW-UP AUTOMÁTICO -->
-      <div class="sol-block reverse fade-in">
-        <div class="sol-copy">
-          <div class="sol-icon">🔁</div>
-          <h3>Follow-up automático</h3>
-          <p>Quando o lead esfria e para de responder, alguém precisa retomar a conversa. O agente faz isso sozinho, no tempo certo, sem deixar ninguém esquecido no funil.</p>
-          <div class="sol-segments">
-            <div class="sol-seg-row"><span class="sol-seg-label">Cliente final</span><span class="sol-seg-text">Clínicas, escolas, imobiliárias</span></div>
-            <div class="sol-seg-row"><span class="sol-seg-label parceiro">Parceiro</span><span class="sol-seg-text">Agências de marketing, consultores comerciais</span></div>
-          </div>
-        </div>
-        <div class="sol-demo">
-          <div class="demo-title-row">Como funciona a retomada</div>
-          <div class="fu-timeline">
-            <div class="fu-track"><div class="fu-track-fill"></div></div>
-            <div class="fu-step">
-              <div class="fu-icon">💬</div>
-              <div><div class="fu-step-title">Lead entra em contato</div><div class="fu-step-desc">Conversa começa normalmente no funil.</div></div>
-            </div>
-            <div class="fu-step">
-              <div class="fu-icon">⏱️</div>
-              <div><div class="fu-step-title">Fica em silêncio</div><div class="fu-step-desc">Passa um tempo sem responder.</div></div>
-            </div>
-            <div class="fu-step active">
-              <div class="fu-icon">✨</div>
-              <div><div class="fu-step-title">IA reativa sozinha</div><div class="fu-step-desc">Envia uma mensagem no momento certo.</div></div>
-            </div>
-            <div class="fu-step">
-              <div class="fu-icon">✅</div>
-              <div><div class="fu-step-title">Conversa retoma</div><div class="fu-step-desc">Lead volta a responder e segue no funil.</div></div>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -609,10 +581,6 @@
           <div class="sol-icon">📊</div>
           <h3>CRM de vendas com Kanban</h3>
           <p>Cada conversa vira uma oportunidade visual, organizada por etapa do funil. Dá pra arrastar entre as colunas e acompanhar tudo de forma simples, sem depender de planilha.</p>
-          <div class="sol-segments">
-            <div class="sol-seg-row"><span class="sol-seg-label">Cliente final</span><span class="sol-seg-text">Imobiliárias, concessionárias, empresas B2B</span></div>
-            <div class="sol-seg-row"><span class="sol-seg-label parceiro">Parceiro</span><span class="sol-seg-text">Consultorias comerciais, treinamentos de vendas</span></div>
-          </div>
         </div>
         <div class="sol-demo">
           <div class="demo-title-row">Arraste um card entre as colunas</div>
@@ -627,10 +595,6 @@
           <div class="sol-icon">📣</div>
           <h3>Disparo de mensagens em massa</h3>
           <p>Pra promoções, avisos ou campanhas pontuais. Escolhe a lista, agenda o dia e horário e o sistema dispara de forma segmentada pra toda a base, sem fazer nada na mão.</p>
-          <div class="sol-segments">
-            <div class="sol-seg-row"><span class="sol-seg-label">Cliente final</span><span class="sol-seg-text">Academias, clínicas de estética, lojas</span></div>
-            <div class="sol-seg-row"><span class="sol-seg-label parceiro">Parceiro</span><span class="sol-seg-text">Agências de marketing, social media</span></div>
-          </div>
         </div>
         <div class="sol-demo">
           <div class="bc-step-label">1. Escolha a lista</div>
@@ -665,10 +629,6 @@
           <div class="sol-icon">💳</div>
           <h3>Cobrança automática</h3>
           <p>Voltada principalmente pra redução de inadimplência. O sistema gera o link de pagamento, lembra o cliente antes do vencimento e confirma o recebimento sozinho, sem ninguém precisando cobrar por mensagem.</p>
-          <div class="sol-segments">
-            <div class="sol-seg-row"><span class="sol-seg-label">Cliente final</span><span class="sol-seg-text">Escolas, academias</span></div>
-            <div class="sol-seg-row"><span class="sol-seg-label parceiro">Parceiro</span><span class="sol-seg-text">BPO financeiro, consultor empresarial</span></div>
-          </div>
         </div>
         <div class="sol-demo">
           <div class="demo-title-row">Impacto na inadimplência</div>
@@ -690,6 +650,7 @@
             <div class="cb-flow-item">💬 <span>Cobrança automática no dia do vencimento</span></div>
             <div class="cb-flow-item">🔔 <span>Régua de cobrança para inadimplentes</span></div>
             <div class="cb-flow-item">✅ <span>Confirmação de pagamento em tempo real</span></div>
+            <div class="cb-flow-item">🧾 <span>Envio automático de nota fiscal</span></div>
           </div>
         </div>
       </div>
@@ -700,10 +661,6 @@
           <div class="sol-icon">💼</div>
           <h3>Plataforma de multiatendimento</h3>
           <p>Todos os atendentes num painel só, com filas de espera, aceite de conversa e histórico completo. Funciona parecido com o WhatsApp Web, só que pensado pra equipe.</p>
-          <div class="sol-segments">
-            <div class="sol-seg-row"><span class="sol-seg-label">Cliente final</span><span class="sol-seg-text">Redes e franquias, empresas com vários atendentes</span></div>
-            <div class="sol-seg-row"><span class="sol-seg-label parceiro">Parceiro</span><span class="sol-seg-text">Consultorias de operação, BPOs de atendimento</span></div>
-          </div>
         </div>
         <div class="sol-demo">
           <div class="ma2-tabs">
@@ -763,10 +720,6 @@
           <div class="sol-icon">🔗</div>
           <h3>Integrações via API</h3>
           <p>A Spotsales conversa com os sistemas que você já usa: agenda, pagamento, CRM, e-commerce. Tudo conectado, sem precisar trocar de ferramenta.</p>
-          <div class="sol-segments">
-            <div class="sol-seg-row"><span class="sol-seg-label">Cliente final</span><span class="sol-seg-text">Clínicas médicas e odontológicas, e-commerces</span></div>
-            <div class="sol-seg-row"><span class="sol-seg-label parceiro">Parceiro</span><span class="sol-seg-text">Consultores empresariais, agências de tecnologia, desenvolvedores de site</span></div>
-          </div>
         </div>
         <div class="sol-demo">
           <div class="hub-center">
@@ -775,13 +728,41 @@
           <div class="hub-row">
             <div class="hub-chip">📅 Google Agenda</div>
             <div class="hub-chip">💳 Asaas</div>
-            <div class="hub-chip">✅ ClickUp</div>
+            <div class="hub-chip">📗 Google Sheets</div>
             <div class="hub-chip">📇 CRMs</div>
             <div class="hub-chip">🛒 E-commerce</div>
           </div>
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+<!-- CLIENTE FINAL E PARCEIRO -->
+<section id="publico">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-header section-center fade-in">
+      <span class="section-label">Quem atendemos</span>
+      <h2 class="section-title">Cliente final e parceiro</h2>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;">Dois perfis diferentes de quem usa a Spotsales. Dá pra pensar em indicação nos dois sentidos.</p>
+    </div>
+    <div class="aud-grid">
+      <div class="aud-col fade-in">
+        <span class="sol-seg-label">Cliente final</span>
+        <h3>Quem usa no próprio negócio</h3>
+        <p>Empresas que querem atender e vender melhor no WhatsApp.</p>
+        <div class="aud-list">
+          <span class="aud-chip">Clínicas médicas</span><span class="aud-chip">Clínicas odontológicas</span><span class="aud-chip">Clínicas de estética</span><span class="aud-chip">Imobiliárias</span><span class="aud-chip">Concessionárias</span><span class="aud-chip">Empresas B2B</span><span class="aud-chip">Escolas</span><span class="aud-chip">Academias</span><span class="aud-chip">Lojas</span><span class="aud-chip">E-commerces</span><span class="aud-chip">Redes e franquias</span><span class="aud-chip">Empresas com vários atendentes</span>
+        </div>
+      </div>
+      <div class="aud-col parceiro fade-in">
+        <span class="sol-seg-label parceiro">Parceiro</span>
+        <h3>Quem leva a solução pros clientes</h3>
+        <p>Profissionais e empresas que atendem outros negócios e podem oferecer a Spotsales.</p>
+        <div class="aud-list">
+          <span class="aud-chip">Agências de tráfego pago</span><span class="aud-chip">Social media</span><span class="aud-chip">Agências de marketing</span><span class="aud-chip">Consultores de marketing</span><span class="aud-chip">Consultores comerciais</span><span class="aud-chip">Consultores empresariais</span><span class="aud-chip">Treinamentos de vendas</span><span class="aud-chip">BPO financeiro</span><span class="aud-chip">Consultorias de operação</span><span class="aud-chip">BPOs de atendimento</span><span class="aud-chip">Agências de tecnologia</span><span class="aud-chip">Desenvolvedores de site</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -804,10 +785,6 @@
         <p>Quando alguém disser que <strong>perde o controle dos leads</strong>, esquece de retornar contato ou não sabe em que fase cada negociação está.</p>
       </div>
       <div class="ref-card fade-in">
-        <span class="ref-tag">🔁 Follow-up</span>
-        <p>Quando você ouvir aquele clássico: <strong>"o cliente sumiu"</strong> e ninguém retomou o contato depois que ele parou de responder.</p>
-      </div>
-      <div class="ref-card fade-in">
         <span class="ref-tag">📣 Disparo em massa</span>
         <p>Quando a pessoa faz <strong>promoções, lançamentos ou avisos</strong> pra muita gente e ainda manda tudo na mão, um por um.</p>
       </div>
@@ -824,28 +801,6 @@
         <p>Quando o negócio usa <strong>vários sistemas soltos</strong> (agenda, financeiro, CRM) que não conversam entre si.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section" id="teste-a-ia">
-  <div class="orb orb-1" style="width:400px;height:400px;top:auto;bottom:-20%;left:auto;right:-10%;"></div>
-
-  <div class="fade-in">
-    <span class="section-label">Vê na prática</span>
-    <h2>Testa a IA <span class="accent">com o seu próprio celular</span></h2>
-    <p>Clica no botão ou escaneia o QR Code pra abrir uma conversa de verdade com a nossa IA.</p>
-
-    <div class="cta-options">
-      <a href="https://wa.me/5521992338141" target="_blank" class="cta-btn">💬 Falar com a IA agora</a>
-      <span class="cta-divider">ou</span>
-      <div class="cta-qr-wrap">
-        <div class="cta-qr-box"><div id="qrcode" title="https://wa.me/5521992338141"><canvas width="96" height="96" style="display: none;"></canvas><img style="display: block;" src="data:image/png;base64,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"></div></div>
-        <span class="cta-qr-label">escaneia o QR Code</span>
-      </div>
-    </div>
-
-    <p class="cta-note">Caso queira refazer o teste, é só enviar a palavra <strong>SAIR</strong>.</p>
   </div>
 </section>
 
@@ -870,7 +825,6 @@
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
   /* ===== FADE-IN ON SCROLL ===== */
   const obs = new IntersectionObserver((entries) => {
@@ -882,18 +836,6 @@
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-
-  /* ===== QR CODE ===== */
-  if (window.QRCode) {
-    new QRCode(document.getElementById("qrcode"), {
-      text: "https://wa.me/5521992338141",
-      width: 96,
-      height: 96,
-      colorDark: "#060d1f",
-      colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.M
-    });
-  }
 
   /* ===== 1. CHAT DEMO (manual play/pause, funil até o agendamento) ===== */
   const chatScript = [
@@ -917,26 +859,26 @@
   let chatTimer = null;
   function typeDelay(text) { return Math.min(1700, 550 + text.length * 18); }
   function setChatBtn(label) { chatBtn.textContent = label; }
+  let chatTypingEl = null;
+  function clearTyping() { if (chatTypingEl) { chatTypingEl.remove(); chatTypingEl = null; } }
   function chatStep() {
     if (!chatPlaying) return;
     if (chatIdx >= chatScript.length) {
       chatPlaying = false;
-      chatTimer = setTimeout(() => {
-        chatEl.innerHTML = '';
-        chatIdx = 0;
-        setChatBtn('▶ Iniciar simulação');
-      }, 1800);
+      setChatBtn('↻ Reiniciar simulação');
       return;
     }
     const msg = chatScript[chatIdx];
+    clearTyping();
     const typing = document.createElement('div');
     typing.className = 'typing-dots';
     typing.style.alignSelf = msg.from === 'lead' ? 'flex-end' : 'flex-start';
     typing.innerHTML = '<span></span><span></span><span></span>';
+    chatTypingEl = typing;
     chatEl.appendChild(typing);
     chatEl.scrollTop = chatEl.scrollHeight;
     chatTimer = setTimeout(() => {
-      typing.remove();
+      clearTyping();
       if (!chatPlaying) return;
       const bubble = document.createElement('div');
       bubble.className = 'chat-bubble ' + msg.from;
@@ -951,9 +893,11 @@
     if (chatPlaying) {
       chatPlaying = false;
       clearTimeout(chatTimer);
+      clearTyping();
       setChatBtn('▶ Continuar simulação');
       return;
     }
+    clearTimeout(chatTimer);
     if (chatIdx >= chatScript.length) { chatEl.innerHTML = ''; chatIdx = 0; }
     chatPlaying = true;
     setChatBtn('⏸ Pausar');
@@ -1045,17 +989,17 @@
 
   /* ===== 5. MULTIATENDIMENTO (fila de atendimento + chat) ===== */
   let ma2Atendendo = [
-    { id: 1, name: 'Studio Bella', time: '2 h atrás', snippet: 'Perfeito, vamos fechar então', unread: 1, agent: 'Ana Souza', tags: [{ label: 'Comercial', cls: 'sector' }, { label: 'Agendado', cls: 'agendado' }],
+    { id: 1, name: 'Studio Bella', photo: 'https://randomuser.me/api/portraits/women/65.jpg', time: '2 h atrás', snippet: 'Perfeito, vamos fechar então', unread: 1, agent: 'Ana Souza', tags: [{ label: 'Comercial', cls: 'sector' }, { label: 'Agendado', cls: 'agendado' }],
       msgs: [ { dir: 'in', text: 'Oi, vocês fazem contrato anual?', time: '09:40' }, { dir: 'out', text: 'Fazemos sim, e sai com um desconto legal', time: '09:42' }, { dir: 'in', text: 'Perfeito, vamos fechar então', time: '09:44' } ] },
-    { id: 2, name: 'Camila Duarte', time: '1 d atrás', snippet: 'Consegue me mandar o contrato', unread: 1, agent: 'Ana Souza', tags: [{ label: 'Comercial', cls: 'sector' }, { label: 'Fechado', cls: 'fechado' }],
+    { id: 2, name: 'Camila Duarte', photo: 'https://randomuser.me/api/portraits/women/44.jpg', time: '1 d atrás', snippet: 'Consegue me mandar o contrato', unread: 1, agent: 'Ana Souza', tags: [{ label: 'Comercial', cls: 'sector' }, { label: 'Fechado', cls: 'fechado' }],
       msgs: [ { dir: 'in', text: 'Já assinei minha parte aqui', time: 'ontem' }, { dir: 'in', text: 'Consegue me mandar o contrato assinado', time: 'ontem' }, { dir: 'out', text: 'Consigo sim, te envio em instantes', time: 'ontem' } ] },
-    { id: 3, name: 'José Carlos', time: '2 h atrás', snippet: 'Próxima quarta dia 2 fica bom', unread: 3, agent: 'Lucas Brasil', tags: [{ label: 'Comercial', cls: 'sector' }, { label: 'Agendado', cls: 'agendado' }],
+    { id: 3, name: 'José Carlos', photo: 'https://randomuser.me/api/portraits/men/32.jpg', time: '2 h atrás', snippet: 'Próxima quarta dia 2 fica bom', unread: 3, agent: 'Lucas Brasil', tags: [{ label: 'Comercial', cls: 'sector' }, { label: 'Agendado', cls: 'agendado' }],
       msgs: [ { dir: 'out', text: 'Ficou definido um dia para a nossa reunião', time: '08:15' }, { dir: 'in', text: 'Próxima quarta dia 2 fica bom', time: '08:20' }, { dir: 'out', text: 'Fechado, te mando o convite', time: '08:21' } ] },
   ];
   let ma2Aguardando = [
-    { id: 4, name: 'Marina Costa', time: '12 min atrás', snippet: 'Oi, tudo bem? Queria saber mais sobre os planos', unread: 1, agent: null, tags: [{ label: 'Comercial', cls: 'sector' }, { label: 'Lead', cls: 'lead' }],
+    { id: 4, name: 'Marina Costa', photo: 'https://randomuser.me/api/portraits/women/68.jpg', time: '12 min atrás', snippet: 'Oi, tudo bem? Queria saber mais sobre os planos', unread: 1, agent: null, tags: [{ label: 'Comercial', cls: 'sector' }, { label: 'Lead', cls: 'lead' }],
       msgs: [ { dir: 'in', text: 'Oi, tudo bem? Queria saber mais sobre os planos de vocês', time: '12 min' } ] },
-    { id: 5, name: 'Diego Andrade', time: '1 h atrás', snippet: 'Voltando ao que a gente tinha falado', unread: 1, agent: null, tags: [{ label: 'Financeiro', cls: 'sector' }, { label: 'Pré-Qualificado', cls: 'qualificado' }],
+    { id: 5, name: 'Diego Andrade', photo: 'https://randomuser.me/api/portraits/men/75.jpg', time: '1 h atrás', snippet: 'Voltando ao que a gente tinha falado', unread: 1, agent: null, tags: [{ label: 'Financeiro', cls: 'sector' }, { label: 'Pré-Qualificado', cls: 'qualificado' }],
       msgs: [ { dir: 'in', text: 'Voltando ao que a gente tinha falado semana passada', time: '1 h' } ] },
   ];
   let ma2Tab = 'atendendo';
@@ -1063,6 +1007,9 @@
 
   const ma2TagColors = { sector: '#60a5fa', lead: '#94a3b8', qualificado: '#2dd4bf', agendado: '#f59e0b', fechado: '#22c55e' };
 
+  function ma2Avatar(conv, cls) {
+    return `<div class="${cls}"><span>${ma2Initials(conv.name)}</span><img src="${conv.photo}" alt="${conv.name}" loading="lazy" onerror="this.remove()"></div>`;
+  }
   function ma2Initials(name) { return name.split(' ').slice(0, 2).map(w => w.charAt(0)).join('').toUpperCase(); }
   function ma2FindConv(id) { return ma2Atendendo.find(c => c.id === id) || ma2Aguardando.find(c => c.id === id); }
   function ma2IsAtendendo(id) { return ma2Atendendo.some(c => c.id === id); }
@@ -1075,7 +1022,7 @@
     if (!ma2IsAtendendo(conv.id)) {
       chatEl.innerHTML = `
         <div class="ma2-chat-header">
-          <div class="ma2-chat-avatar">${ma2Initials(conv.name)}</div>
+          ${ma2Avatar(conv, 'ma2-chat-avatar')}
           <div class="ma2-chat-head-info"><div class="ma2-chat-name">${conv.name}</div><div class="ma2-chat-assigned">Aguardando na fila</div></div>
         </div>
         <div class="ma2-chat-locked">
@@ -1090,7 +1037,7 @@
     const msgsHtml = conv.msgs.map(m => `<div class="ma2-chat-bubble ${m.dir}">${m.text}<span class="ma2-chat-bubble-time">${m.time} ${m.dir === 'out' ? '✓✓' : ''}</span></div>`).join('');
     chatEl.innerHTML = `
       <div class="ma2-chat-header">
-        <div class="ma2-chat-avatar">${ma2Initials(conv.name)}</div>
+        ${ma2Avatar(conv, 'ma2-chat-avatar')}
         <div class="ma2-chat-head-info"><div class="ma2-chat-name">${conv.name}</div><div class="ma2-chat-assigned">Atribuído a ${conv.agent}</div></div>
         <div class="ma2-chat-tags">${tagsHtml}</div>
       </div>
@@ -1159,7 +1106,7 @@
           : `<button class="ma2-btn finish" data-action="finish" data-id="${conv.id}">Finalizar</button>`;
         row.innerHTML = `
           <div class="ma2-avatar-wrap">
-            <div class="ma2-avatar">${ma2Initials(conv.name)}</div>
+            ${ma2Avatar(conv, 'ma2-avatar')}
             <span class="ma2-unread">${conv.unread}</span>
           </div>
           <div class="ma2-info">
